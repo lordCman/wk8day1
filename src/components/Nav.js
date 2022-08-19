@@ -15,8 +15,11 @@ export default class Nav extends Component {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link" to="/feed">Insta</Link>
+                <Link className="nav-link" to="/posts/create">Create Post</Link>
                 <Link className="nav-link" to="/contact">Contact</Link>
                 <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link" to="/signup">Signup</Link>
                 </div>
                 </div>
             </div>
