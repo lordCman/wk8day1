@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Post extends Component {
     render() {
-         const p = this.props.postInfo
+        const p = this.props.postInfo
         return (
             <div className="card" style={{width: '18rem'}}>
                 <img src={p.img_url} className="card-img-top" alt="" />

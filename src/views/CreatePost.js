@@ -4,7 +4,7 @@ export default class CreatePost extends Component {
 
     sendCreateInfo = async (e) => {
         e.preventDefault();
-        const res = await fetch('http://localjost:5000/api/posts/create',{
+        const res = await fetch('http://localhost:5000/api/posts/create',{
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${this.props.user.token}`,
@@ -30,11 +30,11 @@ export default class CreatePost extends Component {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Caption</label>
-                    <input type="password" className="form-control" name='caption' />
+                    <input type="text" className="form-control" name='caption' />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Image URL</label>
-                    <input type="password" className="form-control" name='imgUrl' />
+                    <input type="text" className="form-control" name='imgUrl' />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

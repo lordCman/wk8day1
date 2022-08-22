@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Contact from './views/Contact'
 import Home from './views/Home'
 import Nav from './components/Nav'
@@ -7,54 +7,67 @@ import Login from './views/Login'
 import SignUp from './views/SignUp'
 import IG from './views/IG'
 import CreatePost from './views/CreatePost'
+import Shop from './views/Shop'
+import Cart from './views/Cart'
 
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      posts: [],
-      user: {},
-      name: 'Charlie',
-      money: 500
+export default function App() {
+
+
+  const [user, setUser] = useState([])
+  const [cart, setCart] = useState([])
+
+
+  const logMeIn = (user) => {
+    setUser(user)
+  }
+
+  // addMoney = () => {
+  //   this.setState({money: this.state.money +10})
+  // }
+
+  const addToCart = (item) => {
+    setCart([...cart, item])
+  };
+
+  const getCartCost = (cart) => {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+      let a = parseInt(cart[i].price)
+      total += a
     }
-  }
+    return total
+  };
 
-  logMeIn = (user) => {
-    this.setState({
-      user: user
-    })
-  }
-
-  addMoney = () => {
-    this.setState({money: this.state.money +10})
+  const removeAll = (item) => {
+    setCart(cart.slice(cart.indexOf(item, 1)))
   }
 
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          
-          <Nav />
-          {/* { this.state.name }
+  return (
+    <BrowserRouter>
+      <div>
+
+        <Nav />
+        {/* { this.state.name }
           <button onClick= {this.addMoney}>Add Money</button> */}
 
-          <Routes>
-            <Route path='/' element={<Home money={this.state.money}/>}/>
-            <Route path='/contact' element={<Contact/>}/>
-            <Route path='/login' element={<Login logMeIn={this.logMeIn}/>}/>
-            <Route path='/signup' element={<SignUp/>}/>
-            <Route path='/feed' element={<IG/>}/>
-            <Route path='/posts/create' element={<CreatePost user={this.state.user}/>}/>
-            
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login logMeIn={logMeIn} />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/feed' element={<IG />} />
+          <Route path='/posts/create' element={<CreatePost />} />
+          <Route path='/shop' element={<Shop addToCart={addToCart} />} />
+          <Route path='/cart' element={<Cart cart={cart} getCartCost = {getCartCost} removeAll={removeAll}/>} />
 
-          </Routes>
+        </Routes>
 
 
 
-        </div>
-      </BrowserRouter>
-    )
-  }
-}
+      </div>
+    </BrowserRouter>
+  )
+        }
+
