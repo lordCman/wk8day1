@@ -9,6 +9,7 @@ import IG from './views/IG'
 import CreatePost from './views/CreatePost'
 import Shop from './views/Shop'
 import Cart from './views/Cart'
+import Checklist from './views/Checklist'
 
 
 export default function App() {
@@ -61,7 +62,7 @@ export default function App() {
           <Route path='/posts/create' element={<CreatePost />} />
           <Route path='/shop' element={<Shop addToCart={addToCart} />} />
           <Route path='/cart' element={<Cart cart={cart} getCartCost = {getCartCost} removeAll={removeAll}/>} />
-
+          <Route path='/checklist' element={<Checklist />} />
         </Routes>
 
 
